@@ -93,6 +93,22 @@ TEST_CASE("Singly linked lists", "[slist]"){
     REQUIRE(listInt1.head->key == 10);
   };
 
+  SECTION("Pop Back"){
+    listInt1.pushFront(10);
+    listInt1.popBack();
+    REQUIRE(listInt1.head == nullptr);
+    REQUIRE(listInt1.tail == nullptr);
+    REQUIRE(listInt1.empty() == true);
+
+    listInt2.popBack();
+    REQUIRE(listInt2.tail->key == 4);
+    listInt2.popBack();
+    REQUIRE(listInt2.tail->key == 10);
+    listInt2.pushBack(100);
+    REQUIRE(listInt2.tail->key == 100);
+
+  };
+
   SECTION("Empty"){
     REQUIRE(listInt1.empty() == true);
     REQUIRE(listInt2.empty() == false);

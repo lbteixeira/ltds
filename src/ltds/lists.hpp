@@ -74,6 +74,22 @@ namespace ltds {
   }
 
   template<typename T>
+  void singlyLinkedList<T>::popBack(){
+    // TODO exception when the list is empty
+    if (head == tail) {
+      head = nullptr;
+      tail = nullptr;
+    }
+    else {
+      nodeSingle<T>* temp = head;
+      while (temp->next->next != nullptr) { temp = temp->next; }
+      delete temp->next;
+      temp->next = nullptr;
+      tail = temp;
+    }
+  }
+
+  template<typename T>
   bool singlyLinkedList<T>::empty(){
     if (head == nullptr) { return true; }
     else { return false; }
