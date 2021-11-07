@@ -56,4 +56,20 @@ namespace ltds {
     tempPtr = nullptr;
   };
 
+  template<typename T>
+  void singlyLinkedList<T>::pushBack(const T& key){
+    nodeSingle<T>* Node = new nodeSingle<T>;
+    Node->key = key;
+    Node->next = nullptr;
+
+    if (tail.next == nullptr) {
+      head.next = Node;
+      tail.next = Node;
+    }
+    else {
+      tail.next->next = Node;
+      tail.next = Node;
+    }
+  }
+
 }
