@@ -11,7 +11,7 @@ namespace ltds {
   class singlyLinkedList{
     public:
       singlyLinkedList();
-      singlyLinkedList(const T[]);
+      singlyLinkedList(const T[], int);
 
       nodeSingle<T> head;
       nodeSingle<T> tail;
@@ -33,7 +33,9 @@ namespace ltds {
   singlyLinkedList<T>::singlyLinkedList(){};
 
   template<typename T>
-  singlyLinkedList<T>::singlyLinkedList(const T[]){};
+  singlyLinkedList<T>::singlyLinkedList(const T input[], int size){
+    for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
+  };
 
   template<typename T>
   void singlyLinkedList<T>::pushFront(const T& key){
