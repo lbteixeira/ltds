@@ -13,8 +13,8 @@ namespace ltds {
       singlyLinkedList();
       singlyLinkedList(const T[], int);
 
-      nodeSingle<T> head;
-      nodeSingle<T> tail;
+      nodeSingle<T>* head = nullptr;
+      nodeSingle<T>* tail = nullptr;
 
       void pushFront(T const&);
       void popFront();
@@ -41,18 +41,18 @@ namespace ltds {
   void singlyLinkedList<T>::pushFront(const T& key){
     nodeSingle<T>* Node = new nodeSingle<T>;
     Node->key = key;
-    Node->next = head.next;
-    head.next = Node;
-    if (tail.next == nullptr) {
-      tail.next = head.next;
+    Node->next = head;
+    head = Node;
+    if (tail == nullptr) {
+      tail = head;
     }
   };
 
   template<typename T>
   void singlyLinkedList<T>::popFront(){
     // TODO exception when the list is empty
-    nodeSingle<T>* tempPtr = head.next;
-    head.next = head.next->next;
+    nodeSingle<T>* tempPtr = head;
+    head = head->next;
     delete tempPtr;
     tempPtr = nullptr;
   };
@@ -63,19 +63,19 @@ namespace ltds {
     Node->key = key;
     Node->next = nullptr;
 
-    if (tail.next == nullptr) {
-      head.next = Node;
-      tail.next = Node;
+    if (tail == nullptr) {
+      head = Node;
+      tail = Node;
     }
     else {
-      tail.next->next = Node;
-      tail.next = Node;
+      tail->next = Node;
+      tail = Node;
     }
   }
 
   template<typename T>
   bool singlyLinkedList<T>::empty(){
-    if (head.next == nullptr) { return true; }
+    if (head == nullptr) { return true; }
     else { return false; }
   }
 
