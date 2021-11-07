@@ -6,3 +6,4 @@ add_executable(
   )
 
 include_directories(../src)
+target_compile_options(${CMAKE_PROJECT_NAME}-tests PRIVATE -Werror -Wall -Wextra -pedantic-errors -Wconversion -Wsign-conversion)
