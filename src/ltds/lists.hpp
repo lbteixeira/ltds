@@ -50,6 +50,7 @@ namespace ltds {
 
   template<typename T>
   void singlyLinkedList<T>::popFront(){
+    // TODO exception when the list is empty
     nodeSingle<T>* tempPtr = head.next;
     head.next = head.next->next;
     delete tempPtr;
@@ -70,6 +71,12 @@ namespace ltds {
       tail.next->next = Node;
       tail.next = Node;
     }
+  }
+
+  template<typename T>
+  bool singlyLinkedList<T>::empty(){
+    if (head.next == nullptr) { return true; }
+    else { return false; }
   }
 
 }
