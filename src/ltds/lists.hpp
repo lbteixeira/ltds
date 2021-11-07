@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <stdexcept>
+
 namespace ltds {
   template<typename T>
   struct nodeSingle{
@@ -50,11 +53,21 @@ namespace ltds {
 
   template<typename T>
   void singlyLinkedList<T>::popFront(){
-    // TODO exception when the list is empty
-    nodeSingle<T>* tempPtr = head;
-    head = head->next;
-    delete tempPtr;
-    tempPtr = nullptr;
+    try{
+      if (this->empty()) {
+        throw std::out_of_range("The list is empty, can't pop");
+      }
+      else{
+        nodeSingle<T>* tempPtr = head;
+        head = head->next;
+        delete tempPtr;
+        tempPtr = nullptr;
+      }
+    }
+
+    catch(std::out_of_range &error){
+      std::cerr << error.what() << std::endl;
+    }
   };
 
   template<typename T>
@@ -75,18 +88,28 @@ namespace ltds {
 
   template<typename T>
   void singlyLinkedList<T>::popBack(){
-    // TODO exception when the list is empty
-    if (head == tail) {
-      head = nullptr;
-      tail = nullptr;
+    try {
+      if (tail == nullptr) {
+        throw std::out_of_range("The list is empty, can't pop");
+      }
+      else {
+        if (head == tail) {
+          head = nullptr;
+          tail = nullptr;
+        }
+        else {
+          nodeSingle<T>* temp = head;
+          while (temp->next->next != nullptr) { temp = temp->next; }
+          delete temp->next;
+          temp->next = nullptr;
+          tail = temp;
+        }
+      }
+
+    }catch(std::out_of_range &error) {
+      std::cerr << error.what() << std::endl;
     }
-    else {
-      nodeSingle<T>* temp = head;
-      while (temp->next->next != nullptr) { temp = temp->next; }
-      delete temp->next;
-      temp->next = nullptr;
-      tail = temp;
-    }
+
   }
 
   template<typename T>

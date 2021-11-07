@@ -87,13 +87,16 @@ TEST_CASE("Singly linked lists", "[slist]"){
   };
 
   SECTION("Pop Front"){
+    // TODO Tests for exception handling
     listInt1.pushFront(10);
     listInt1.pushFront(26);
     listInt1.popFront();
     REQUIRE(listInt1.head->key == 10);
+    listDouble1.popFront();
   };
 
   SECTION("Pop Back"){
+    // TODO Tests for exception handling
     listInt1.pushFront(10);
     listInt1.popBack();
     REQUIRE(listInt1.head == nullptr);
@@ -106,6 +109,8 @@ TEST_CASE("Singly linked lists", "[slist]"){
     REQUIRE(listInt2.tail->key == 10);
     listInt2.pushBack(100);
     REQUIRE(listInt2.tail->key == 100);
+
+    listDouble1.popBack();
 
   };
 
