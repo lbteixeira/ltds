@@ -134,13 +134,16 @@ TEST_CASE("Singly linked lists", "[slist]"){
     REQUIRE(listInt2.empty() == true);
   };
 
-  SECTION("Top Front"){
+  SECTION("Top Front and Back"){
     listInt1.pushFront(-1);
     REQUIRE(listInt1.topFront() == -1);
+    REQUIRE(listInt1.topBack() == -1);
     listInt1.pushBack(-2);
     REQUIRE(listInt1.topFront() == -1);
+    REQUIRE(listInt1.topBack() == -2);
 
     REQUIRE(listInt2.topFront() == 7);
+    REQUIRE(listInt2.topBack() == 13);
 
     listDouble1.pushFront(-1.0);
     REQUIRE(listDouble1.topFront() == -1);
@@ -152,10 +155,11 @@ TEST_CASE("Singly linked lists", "[slist]"){
     ltds::singlyLinkedList<std::string> listString;
     listString.pushBack("One");
     listString.pushBack("Two");
-    REQUIRE(listString.empty() == false);
     REQUIRE(listString.topFront().compare("One") == 0);
+    REQUIRE(listString.topBack().compare("Two") == 0);
     listString.popFront();
     REQUIRE(listString.topFront().compare("Two") == 0);
+    REQUIRE(listString.topBack().compare("Two") == 0);
 
   };
 

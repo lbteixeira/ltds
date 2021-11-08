@@ -125,4 +125,9 @@ namespace ltds {
     return head->key;
   }
 
+  template<typename T>
+  T singlyLinkedList<T>::topBack(){
+    return tail->key;
+  }
+
 }
