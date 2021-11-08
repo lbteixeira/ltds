@@ -68,7 +68,7 @@ namespace ltds {
     catch(std::out_of_range &error){
       std::cerr << error.what() << std::endl;
     }
-  };
+  }
 
   template<typename T>
   void singlyLinkedList<T>::pushBack(const T& key){
@@ -116,6 +116,13 @@ namespace ltds {
   bool singlyLinkedList<T>::empty(){
     if (head == nullptr) { return true; }
     else { return false; }
+  }
+
+  // TODO check how to properly handle the exceptions when returning values
+  // consult stl
+  template<typename T>
+  T singlyLinkedList<T>::topFront(){
+    return head->key;
   }
 
 }

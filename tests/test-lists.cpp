@@ -1,5 +1,6 @@
 #include <catch2/catch.hpp>
 #include <stdexcept>
+#include <string>
 #include "ltds/lists.hpp"
 
 TEST_CASE("Construction of nodes", "[node]"){ ltds::nodeSingle<float> node1;
@@ -131,6 +132,30 @@ TEST_CASE("Singly linked lists", "[slist]"){
 
     REQUIRE(listInt1.empty() == false);
     REQUIRE(listInt2.empty() == true);
+  };
+
+  SECTION("Top Front"){
+    listInt1.pushFront(-1);
+    REQUIRE(listInt1.topFront() == -1);
+    listInt1.pushBack(-2);
+    REQUIRE(listInt1.topFront() == -1);
+
+    REQUIRE(listInt2.topFront() == 7);
+
+    listDouble1.pushFront(-1.0);
+    REQUIRE(listDouble1.topFront() == -1);
+    listDouble1.pushBack(-2.0);
+    REQUIRE(listDouble1.topFront() == -1);
+
+    REQUIRE(listDouble2.topFront() == 7);
+
+    ltds::singlyLinkedList<std::string> listString;
+    listString.pushBack("One");
+    listString.pushBack("Two");
+    REQUIRE(listString.empty() == false);
+    REQUIRE(listString.topFront().compare("One") == 0);
+    listString.popFront();
+    REQUIRE(listString.topFront().compare("Two") == 0);
 
   };
 
