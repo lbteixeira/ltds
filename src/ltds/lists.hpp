@@ -118,8 +118,6 @@ namespace ltds {
     else { return false; }
   }
 
-  // TODO check how to properly handle the exceptions when returning values
-  // consult stl
   template<typename T>
   T singlyLinkedList<T>::topFront(){
     return head->key;
@@ -128,6 +126,16 @@ namespace ltds {
   template<typename T>
   T singlyLinkedList<T>::topBack(){
     return tail->key;
+  }
+
+  template<typename T>
+  bool singlyLinkedList<T>::find(const T &key){
+    nodeSingle<T>* temp = head;
+    while (temp != nullptr) {
+      if (temp->key == key) { return true; }
+      else { temp = temp->next; }
+    }
+    return false;
   }
 
 }

@@ -32,6 +32,9 @@ TEST_CASE("Singly linked lists", "[slist]"){
   ltds::singlyLinkedList<int> listInt2(intArray, 4);
   ltds::singlyLinkedList<double> listDouble1;
   ltds::singlyLinkedList<double> listDouble2(doubleArray, 4);
+  ltds::singlyLinkedList<std::string> listString;
+  listString.pushBack("One");
+  listString.pushBack("Two");
 
   SECTION("Initial state - Default constructor"){
     REQUIRE(listInt1.head == nullptr);
@@ -152,14 +155,23 @@ TEST_CASE("Singly linked lists", "[slist]"){
 
     REQUIRE(listDouble2.topFront() == 7);
 
-    ltds::singlyLinkedList<std::string> listString;
-    listString.pushBack("One");
-    listString.pushBack("Two");
     REQUIRE(listString.topFront().compare("One") == 0);
     REQUIRE(listString.topBack().compare("Two") == 0);
     listString.popFront();
     REQUIRE(listString.topFront().compare("Two") == 0);
     REQUIRE(listString.topBack().compare("Two") == 0);
+  };
+
+  SECTION("Find"){
+
+    REQUIRE(listInt2.find(7));
+    REQUIRE(listInt2.find(10));
+    REQUIRE(listInt2.find(4));
+    REQUIRE(listInt2.find(13));
+    REQUIRE(!listInt2.find(-1));
+    REQUIRE(listString.find("One"));
+    REQUIRE(listString.find("Two"));
+    REQUIRE(!listString.find("Three"));
 
   };
 
