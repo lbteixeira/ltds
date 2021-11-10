@@ -25,10 +25,10 @@ namespace ltds {
       void popBack();
       void addBefore(nodeSingle<T> const&, T const&);
       void addAfter(nodeSingle<T> const&, T const&);
-      T topFront();
-      T topBack();
-      bool find(T const&);
-      bool empty();
+      T topFront() const;
+      T topBack() const;
+      bool find(T const&) const;
+      bool empty() const;
       void erase(T const&);
   };
 
@@ -109,27 +109,26 @@ namespace ltds {
     }catch(std::out_of_range &error) {
       std::cerr << error.what() << std::endl;
     }
-
   }
 
   template<typename T>
-  bool singlyLinkedList<T>::empty(){
+  bool singlyLinkedList<T>::empty() const {
     if (head == nullptr) { return true; }
     else { return false; }
   }
 
   template<typename T>
-  T singlyLinkedList<T>::topFront(){
+  T singlyLinkedList<T>::topFront() const {
     return head->key;
   }
 
   template<typename T>
-  T singlyLinkedList<T>::topBack(){
+  T singlyLinkedList<T>::topBack() const {
     return tail->key;
   }
 
   template<typename T>
-  bool singlyLinkedList<T>::find(const T &key){
+  bool singlyLinkedList<T>::find(const T &key) const {
     nodeSingle<T>* temp = head;
     while (temp != nullptr) {
       if (temp->key == key) { return true; }
