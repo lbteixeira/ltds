@@ -53,21 +53,10 @@ namespace ltds {
 
   template<typename T>
   void singlyLinkedList<T>::popFront(){
-    try{
-      if (this->empty()) {
-        throw std::out_of_range("The list is empty, can't pop");
-      }
-      else{
-        nodeSingle<T>* tempPtr = head;
-        head = head->next;
-        delete tempPtr;
-        tempPtr = nullptr;
-      }
-    }
-
-    catch(std::out_of_range &error){
-      std::cerr << error.what() << std::endl;
-    }
+    nodeSingle<T>* tempPtr = head;
+    head = head->next;
+    delete tempPtr;
+    tempPtr = nullptr;
   }
 
   template<typename T>
@@ -88,26 +77,16 @@ namespace ltds {
 
   template<typename T>
   void singlyLinkedList<T>::popBack(){
-    try {
-      if (tail == nullptr) {
-        throw std::out_of_range("The list is empty, can't pop");
-      }
-      else {
-        if (head == tail) {
-          head = nullptr;
-          tail = nullptr;
-        }
-        else {
-          nodeSingle<T>* temp = head;
-          while (temp->next->next != nullptr) { temp = temp->next; }
-          delete temp->next;
-          temp->next = nullptr;
-          tail = temp;
-        }
-      }
-
-    }catch(std::out_of_range &error) {
-      std::cerr << error.what() << std::endl;
+    if (head == tail) {
+      head = nullptr;
+      tail = nullptr;
+    }
+    else {
+      nodeSingle<T>* temp = head;
+      while (temp->next->next != nullptr) { temp = temp->next; }
+      delete temp->next;
+      temp->next = nullptr;
+      tail = temp;
     }
   }
 

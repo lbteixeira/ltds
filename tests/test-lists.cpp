@@ -96,7 +96,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
     listInt1.pushFront(26);
     listInt1.popFront();
     REQUIRE(listInt1.head->key == 10);
-    listDouble1.popFront();
     listInt1.pushFront(-1);
     REQUIRE(listInt1.head->key == -1);
   };
