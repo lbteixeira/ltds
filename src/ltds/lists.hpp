@@ -114,6 +114,19 @@ namespace ltds {
       else { temp = temp->next; }
     }
     return false;
+  template<typename T>
+  void singlyLinkedList<T>::erase(const T &key){
+    nodeSingle<T>* temp = head;
+    nodeSingle<T>* tempDel = head;
+    while (temp->next != nullptr) {
+      if (temp->next->key == key) {
+        tempDel = temp->next;
+        temp->next = temp->next->next;
+        delete tempDel;
+        tempDel = nullptr;
+        break;
+      }
+    }
   }
 
 }

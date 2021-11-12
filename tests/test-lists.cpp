@@ -162,7 +162,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
   };
 
   SECTION("Find"){
-
     REQUIRE(listInt2.find(7));
     REQUIRE(listInt2.find(10));
     REQUIRE(listInt2.find(4));
@@ -171,7 +170,19 @@ TEST_CASE("Singly linked lists", "[slist]"){
     REQUIRE(listString.find("One"));
     REQUIRE(listString.find("Two"));
     REQUIRE(!listString.find("Three"));
+  };
 
+  SECTION("Erase"){
+    REQUIRE(listInt2.find(10));
+    listInt2.erase(10);
+    REQUIRE(!listInt2.find(10));
+
+    REQUIRE(listInt2.find(4));
+    listInt2.erase(4);
+    REQUIRE(!listInt2.find(4));
+
+    REQUIRE(listString.find("One"));
+    listString.erase("One");
   };
 
 }
