@@ -11,10 +11,10 @@ namespace ltds {
   };
 
   template<typename T>
-  class singlyLinkedList{
+  class List{
     public:
-      singlyLinkedList();
-      singlyLinkedList(const T[], int);
+      List();
+      List(const T[], int);
 
       nodeSingle<T>* head = nullptr;
       nodeSingle<T>* tail = nullptr;
@@ -33,15 +33,15 @@ namespace ltds {
   };
 
   template<typename T>
-  singlyLinkedList<T>::singlyLinkedList(){};
+  List<T>::List(){};
 
   template<typename T>
-  singlyLinkedList<T>::singlyLinkedList(const T input[], int size){
+  List<T>::List(const T input[], int size){
     for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
   };
 
   template<typename T>
-  void singlyLinkedList<T>::pushFront(const T& key){
+  void List<T>::pushFront(const T& key){
     nodeSingle<T>* Node = new nodeSingle<T>;
     Node->key = key;
     Node->next = head;
@@ -52,7 +52,7 @@ namespace ltds {
   };
 
   template<typename T>
-  void singlyLinkedList<T>::popFront(){
+  void List<T>::popFront(){
     nodeSingle<T>* tempPtr = head;
     head = head->next;
     delete tempPtr;
@@ -60,7 +60,7 @@ namespace ltds {
   }
 
   template<typename T>
-  void singlyLinkedList<T>::pushBack(const T& key){
+  void List<T>::pushBack(const T& key){
     nodeSingle<T>* Node = new nodeSingle<T>;
     Node->key = key;
     Node->next = nullptr;
@@ -76,7 +76,7 @@ namespace ltds {
   }
 
   template<typename T>
-  void singlyLinkedList<T>::popBack(){
+  void List<T>::popBack(){
     if (head == tail) {
       head = nullptr;
       tail = nullptr;
@@ -91,23 +91,23 @@ namespace ltds {
   }
 
   template<typename T>
-  bool singlyLinkedList<T>::empty() const {
+  bool List<T>::empty() const {
     if (head == nullptr) { return true; }
     else { return false; }
   }
 
   template<typename T>
-  T singlyLinkedList<T>::topFront() const {
+  T List<T>::topFront() const {
     return head->key;
   }
 
   template<typename T>
-  T singlyLinkedList<T>::topBack() const {
+  T List<T>::topBack() const {
     return tail->key;
   }
 
   template<typename T>
-  nodeSingle<T>* singlyLinkedList<T>::findPosition(const T &key) const {
+  nodeSingle<T>* List<T>::findPosition(const T &key) const {
     nodeSingle<T>* temp = head;
     while (temp != nullptr) {
       if (temp->key == key) { return temp; }
@@ -117,14 +117,14 @@ namespace ltds {
   }
 
   template<typename T>
-  bool singlyLinkedList<T>::find(const T &key) const {
+  bool List<T>::find(const T &key) const {
     nodeSingle<T>* temp = findPosition(key);
     if (temp == nullptr) { return false; }
     else { return true; }
   }
 
   template<typename T>
-  void singlyLinkedList<T>::erase(const T &key){
+  void List<T>::erase(const T &key){
     nodeSingle<T>* temp = head;
     nodeSingle<T>* tempDel = head;
     while (temp->next != nullptr) {

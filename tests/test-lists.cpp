@@ -28,11 +28,11 @@ TEST_CASE("Construction of nodes", "[node]"){ ltds::nodeSingle<float> node1;
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
   const double doubleArray[] = {7.0, 10.0, 4.0, 13.0};
-  ltds::singlyLinkedList<int> listInt1;
-  ltds::singlyLinkedList<int> listInt2(intArray, 4);
-  ltds::singlyLinkedList<double> listDouble1;
-  ltds::singlyLinkedList<double> listDouble2(doubleArray, 4);
-  ltds::singlyLinkedList<std::string> listString;
+  ltds::List<int> listInt1;
+  ltds::List<int> listInt2(intArray, 4);
+  ltds::List<double> listDouble1;
+  ltds::List<double> listDouble2(doubleArray, 4);
+  ltds::List<std::string> listString;
   listString.pushBack("One");
   listString.pushBack("Two");
 
@@ -180,9 +180,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
     REQUIRE(listInt2.find(4));
     listInt2.erase(4);
     REQUIRE(!listInt2.find(4));
-
-    REQUIRE(listString.find("One"));
-    listString.erase("One");
   };
 
 }
