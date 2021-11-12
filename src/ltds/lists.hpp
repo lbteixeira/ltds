@@ -30,6 +30,8 @@ namespace ltds {
       bool find(T const&) const;
       bool empty() const;
       void erase(T const&);
+    private:
+      nodeSingle<T>* findPosition(T const&) const;
   };
 
   template<typename T>
@@ -107,13 +109,22 @@ namespace ltds {
   }
 
   template<typename T>
-  bool singlyLinkedList<T>::find(const T &key) const {
+  nodeSingle<T>* singlyLinkedList<T>::findPosition(const T &key) const {
     nodeSingle<T>* temp = head;
     while (temp != nullptr) {
-      if (temp->key == key) { return true; }
+      if (temp->key == key) { return temp; }
       else { temp = temp->next; }
     }
-    return false;
+    return nullptr;
+  }
+
+  template<typename T>
+  bool singlyLinkedList<T>::find(const T &key) const {
+    nodeSingle<T>* temp = findPosition(key);
+    if (temp == nullptr) { return false; }
+    else { return true; }
+  }
+
   template<typename T>
   void singlyLinkedList<T>::erase(const T &key){
     nodeSingle<T>* temp = head;
