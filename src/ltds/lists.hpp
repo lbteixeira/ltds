@@ -23,8 +23,6 @@ namespace ltds {
       void popFront();
       void pushBack(T const&);
       void popBack();
-      void addBefore(nodeSingle<T> const&, T const&);
-      void addAfter(nodeSingle<T> const&, T const&);
       T topFront() const;
       T topBack() const;
       bool find(T const&) const;
