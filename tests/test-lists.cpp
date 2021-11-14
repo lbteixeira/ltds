@@ -3,28 +3,6 @@
 #include <string>
 #include "ltds/lists.hpp"
 
-TEST_CASE("Construction of nodes", "[node]"){ ltds::nodeSingle<float> node1;
-  ltds::nodeSingle<float> node2;
-  ltds::nodeSingle<int> node3;
-  ltds::nodeSingle<int> node4;
-
-  node1.key = 1.0;
-  node2.key = 2.0;
-  node2.next = &node1;
-  node3.key = 3;
-  node4.key = 40;
-  node4.next = &node3;
-  node3.next = &node4;
-
-  REQUIRE(node1.key == 1.0);
-  REQUIRE(node2.key == 2.0);
-  REQUIRE(node3.key == 3);
-  REQUIRE(node1.next == nullptr);
-  REQUIRE(node2.next == &node1);
-  REQUIRE(node3.next == &node4);
-  REQUIRE(node4.next == &node3);
-}
-
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
   const double doubleArray[] = {7.0, 10.0, 4.0, 13.0};
@@ -117,7 +95,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
     listDouble1.popBack();
     listInt2.pushBack(-1);
     REQUIRE(listInt2.tail->key == -1);
-
   };
 
   SECTION("Empty"){

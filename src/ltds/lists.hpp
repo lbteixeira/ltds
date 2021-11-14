@@ -1,23 +1,17 @@
 #pragma once
 
-#include <iostream>
-#include <stdexcept>
-
 namespace ltds {
   template<typename T>
-  struct nodeSingle{
-    T key;
-    nodeSingle* next = nullptr;
-  };
-
-  template<typename T>
   class List{
+    private:
+      struct node;
+
     public:
       List();
       List(const T[], int);
 
-      nodeSingle<T>* head = nullptr;
-      nodeSingle<T>* tail = nullptr;
+      node* head = nullptr;
+      node* tail = nullptr;
 
       void pushFront(T const&);
       void popFront();
@@ -28,8 +22,12 @@ namespace ltds {
       bool find(T const&) const;
       bool empty() const;
       void erase(T const&);
-    private:
-      nodeSingle<T>* findPosition(T const&) const;
+  };
+
+  template<typename T>
+  struct List<T>::node{
+    T key;
+    node* next = nullptr;
   };
 
   template<typename T>
@@ -42,7 +40,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::pushFront(const T& key){
-    nodeSingle<T>* Node = new nodeSingle<T>;
+    node* Node = new node;
     Node->key = key;
     Node->next = head;
     head = Node;
@@ -53,7 +51,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::popFront(){
-    nodeSingle<T>* tempPtr = head;
+    node* tempPtr = head;
     head = head->next;
     delete tempPtr;
     tempPtr = nullptr;
@@ -61,7 +59,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::pushBack(const T& key){
-    nodeSingle<T>* Node = new nodeSingle<T>;
+    node* Node = new node;
     Node->key = key;
     Node->next = nullptr;
 
@@ -82,7 +80,7 @@ namespace ltds {
       tail = nullptr;
     }
     else {
-      nodeSingle<T>* temp = head;
+      node* temp = head;
       while (temp->next->next != nullptr) { temp = temp->next; }
       delete temp->next;
       temp->next = nullptr;
@@ -107,26 +105,19 @@ namespace ltds {
   }
 
   template<typename T>
-  nodeSingle<T>* List<T>::findPosition(const T &key) const {
-    nodeSingle<T>* temp = head;
+  bool List<T>::find(const T &key) const {
+    node* temp = head;
     while (temp != nullptr) {
-      if (temp->key == key) { return temp; }
+      if (temp->key == key) { return true; }
       else { temp = temp->next; }
     }
-    return nullptr;
-  }
-
-  template<typename T>
-  bool List<T>::find(const T &key) const {
-    nodeSingle<T>* temp = findPosition(key);
-    if (temp == nullptr) { return false; }
-    else { return true; }
+    return false;
   }
 
   template<typename T>
   void List<T>::erase(const T &key){
-    nodeSingle<T>* temp = head;
-    nodeSingle<T>* tempDel = head;
+    node* temp = head;
+    node* tempDel = head;
     while (temp->next != nullptr) {
       if (temp->next->key == key) {
         tempDel = temp->next;
