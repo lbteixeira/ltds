@@ -2,24 +2,42 @@
 #include <stdexcept>
 #include <string>
 #include "ltds/listSingly.hpp"
+#include "ltds/listDoubly.hpp"
 
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
   const double doubleArray[] = {7.0, 10.0, 4.0, 13.0};
+
   ltds::List<int> listInt1;
   ltds::List<int> listInt2(intArray, 4);
   ltds::List<double> listDouble1;
   ltds::List<double> listDouble2(doubleArray, 4);
+
+  ltds::ListDoubly<int> listInt1Doubly;
+  ltds::ListDoubly<int> listInt2Doubly(intArray, 4);
+  ltds::ListDoubly<double> listDouble1Doubly;
+  ltds::ListDoubly<double> listDouble2Doubly(doubleArray, 4);
+
   ltds::List<std::string> listString;
   listString.pushBack("One");
   listString.pushBack("Two");
 
   SECTION("Initial state - Default constructor"){
-    REQUIRE(listInt1.head == nullptr);
-    REQUIRE(listDouble1.head == nullptr);
+    SECTION("Singly"){
+      REQUIRE(listInt1.head == nullptr);
+      REQUIRE(listDouble1.head == nullptr);
 
-    REQUIRE(listInt1.tail == nullptr);
-    REQUIRE(listDouble1.tail == nullptr);
+      REQUIRE(listInt1.tail == nullptr);
+      REQUIRE(listDouble1.tail == nullptr);
+    };
+
+    SECTION("Doubly"){
+      REQUIRE(listInt1Doubly.head == nullptr);
+      REQUIRE(listDouble1Doubly.head == nullptr);
+
+      REQUIRE(listInt1Doubly.tail == nullptr);
+      REQUIRE(listDouble1Doubly.tail == nullptr);
+    };
   };
 
   SECTION("Initial state - Constructor with array"){
