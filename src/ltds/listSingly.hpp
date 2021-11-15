@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LISTSINGLY_HPP
+#define LISTSINGLY_HPP
 
 namespace ltds {
   template<typename T>
@@ -130,3 +131,5 @@ namespace ltds {
   }
 
 }
+
+#endif /* end of include guard: LISTSINGLY_HPP */
