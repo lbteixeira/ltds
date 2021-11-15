@@ -1,7 +1,7 @@
 #include <catch2/catch.hpp>
 #include <stdexcept>
 #include <string>
-#include "ltds/lists.hpp"
+#include "ltds/listSingly.hpp"
 
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
