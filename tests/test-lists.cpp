@@ -6,17 +6,12 @@
 
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
-  const double doubleArray[] = {7.0, 10.0, 4.0, 13.0};
 
   ltds::List<int> listInt1;
   ltds::List<int> listInt2(intArray, 4);
-  ltds::List<double> listDouble1;
-  ltds::List<double> listDouble2(doubleArray, 4);
 
   ltds::ListDoubly<int> listInt1Doubly;
   ltds::ListDoubly<int> listInt2Doubly(intArray, 4);
-  ltds::ListDoubly<double> listDouble1Doubly;
-  ltds::ListDoubly<double> listDouble2Doubly(doubleArray, 4);
 
   ltds::List<std::string> listString;
   listString.pushBack("One");
@@ -25,66 +20,45 @@ TEST_CASE("Singly linked lists", "[slist]"){
   SECTION("Initial state - Default constructor"){
     SECTION("Singly"){
       REQUIRE(listInt1.head == nullptr);
-      REQUIRE(listDouble1.head == nullptr);
 
       REQUIRE(listInt1.tail == nullptr);
-      REQUIRE(listDouble1.tail == nullptr);
     };
 
     SECTION("Doubly"){
       REQUIRE(listInt1Doubly.head == nullptr);
-      REQUIRE(listDouble1Doubly.head == nullptr);
 
       REQUIRE(listInt1Doubly.tail == nullptr);
-      REQUIRE(listDouble1Doubly.tail == nullptr);
     };
   };
 
   SECTION("Initial state - Constructor with array"){
     REQUIRE(listInt2.head->key == 7);
-    REQUIRE(listDouble2.head->key == 7.0);
 
     REQUIRE(listInt2.tail->key == 13);
-    REQUIRE(listDouble2.tail->key == 13.0);
   };
 
   SECTION("Push Front"){
     listInt1.pushFront(26);
     listInt2.pushFront(26);
-    listDouble1.pushFront(26.0);
-    listDouble2.pushFront(26.0);
 
     REQUIRE(listInt1.head->key == 26);
     REQUIRE(listInt1.tail->key == 26);
     REQUIRE(listInt2.head->key == 26);
     REQUIRE(listInt2.tail->key == 13);
 
-    REQUIRE(listDouble1.head->key == 26.0);
-    REQUIRE(listDouble1.tail->key == 26.0);
-    REQUIRE(listDouble2.head->key == 26.0);
-    REQUIRE(listDouble2.tail->key == 13.0);
-
     listInt1.pushFront(12);
     listInt2.pushFront(12);
-    listDouble1.pushFront(12.0);
-    listDouble2.pushFront(12.0);
 
     REQUIRE(listInt1.head->key == 12);
     REQUIRE(listInt1.tail->key == 26);
     REQUIRE(listInt2.head->key == 12);
     REQUIRE(listInt2.tail->key == 13);
 
-    REQUIRE(listDouble1.head->key == 12.0);
-    REQUIRE(listDouble1.tail->key == 26.0);
-    REQUIRE(listDouble2.head->key == 12.0);
-    REQUIRE(listDouble2.tail->key == 13.0);
   };
 
   SECTION("Push Back"){
     listInt1.pushBack(26);
     listInt2.pushFront(26);
-    listDouble1.pushBack(26.0);
-    listDouble2.pushFront(26.0);
   };
 
   SECTION("Pop Front"){
@@ -110,7 +84,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
     listInt2.pushBack(100);
     REQUIRE(listInt2.tail->key == 100);
 
-    listDouble1.popBack();
     listInt2.pushBack(-1);
     REQUIRE(listInt2.tail->key == -1);
   };
@@ -118,8 +91,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
   SECTION("Empty"){
     REQUIRE(listInt1.empty() == true);
     REQUIRE(listInt2.empty() == false);
-    REQUIRE(listDouble1.empty() == true);
-    REQUIRE(listDouble2.empty() == false);
 
     listInt1.pushFront(15);
     listInt2.popFront();
@@ -141,13 +112,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
 
     REQUIRE(listInt2.topFront() == 7);
     REQUIRE(listInt2.topBack() == 13);
-
-    listDouble1.pushFront(-1.0);
-    REQUIRE(listDouble1.topFront() == -1);
-    listDouble1.pushBack(-2.0);
-    REQUIRE(listDouble1.topFront() == -1);
-
-    REQUIRE(listDouble2.topFront() == 7);
 
     REQUIRE(listString.topFront().compare("One") == 0);
     REQUIRE(listString.topBack().compare("Two") == 0);
