@@ -2,46 +2,21 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <p align="center">
-  <h1 align="center">A C++ project</h1>
+  <h1 align="center">LTDS</h1>
 
   <p align="center">
-    My project.
+      Lucas Teixeira Data Structures.
   </p>
 
 ## About The Project
 
-Describe the project here.
+This project is only intended to be a playground, where I'm going to practice
+the implementation of classic data structures in C++ (therefore the super
+original name). Although I'm giving below build and install instructions, I
+really don't recommend anyone to do that, this is only for my own reference.
 
 ### Project structure
 
-```bash
-├── build
-│  ├── debug
-│  └── release
-├── CMakeLists.txt
-├── compile_commands.json
-├── docs
-├── Makefile
-├── README.md
-├── src
-│  ├── CMakeLists.txt
-│  └── project_name
-│     ├── namespace1
-│     │  ├── add.cpp
-│     │  └── add.hpp
-│     └── namespace2
-└── tests
-   ├── build
-   ├── CMakeLists.txt
-   ├── main.cpp
-   ├── test-1.cpp
-   └── test-2.cpp
-```
-
-### Prerequisites / Dependencies
-
-List here the libraries/frameworks used to build the project. Refer to the
-installation pages.
 
 ### Installation
 
@@ -50,10 +25,6 @@ Describe how to compile/install the project.
 ### Usage
 
 Describe how to use the software.
-
-### Contributing
-
-Information for possible future contributors.
 
 ## License
 
