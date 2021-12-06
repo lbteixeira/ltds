@@ -19,6 +19,5 @@ endif()
 # Only build the examples if required
 # Update this list as you include more examples
 if(PROJECT_BUILD_EXAMPLES)
-  add_subdirectory(examples/example1)
-  add_subdirectory(examples/example2)
+  add_subdirectory(examples)
 endif()
