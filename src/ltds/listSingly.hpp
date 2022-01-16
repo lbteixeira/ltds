@@ -45,7 +45,6 @@ namespace ltds {
   template<typename T>
   class List<T>::node{
     public:
-      node() = delete;
       node(const T&, node*);
 
       T key;
