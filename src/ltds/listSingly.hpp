@@ -22,6 +22,7 @@ namespace ltds {
     public:
       List();
       List(const T[], int);
+      ~List();
 
       void pushFront(T const&);
       void popFront();
@@ -66,6 +67,12 @@ namespace ltds {
   template<typename T>
   List<T>::List(const T input[], int size) : head(nullptr), tail(nullptr){
     for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
+  }
+
+  // Destructor deletes all nodes before deleting the list
+  template<typename T>
+  List<T>::~List(){
+    this->clear();
   }
 
   // Member functions
