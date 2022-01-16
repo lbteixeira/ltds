@@ -216,6 +216,13 @@ TEST_CASE("Singly linked lists", "[slist]"){
       listString2.erase("Four");
       REQUIRE(!listString2.find("Four"));
     };
+
+    SECTION("Clear"){
+      listInt2.clear();
+      listString2.clear();
+      REQUIRE(listInt2.empty());
+      REQUIRE(listString2.empty());
+    };
   };
 
 }

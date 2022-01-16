@@ -32,6 +32,7 @@ namespace ltds {
       bool find(T const&) const;
       bool empty() const;
       void erase(T const&);
+      void clear();
   };
 
   /******************************
@@ -58,6 +59,7 @@ namespace ltds {
    * Implementations related to the list class
    */
 
+  // Constructors
   template<typename T>
   List<T>::List() : head(nullptr), tail(nullptr){}
 
@@ -66,6 +68,7 @@ namespace ltds {
     for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
   }
 
+  // Member functions
   template<typename T>
   void List<T>::pushFront(const T& key){
     node* Node = new node(key, head);
@@ -150,6 +153,13 @@ namespace ltds {
         tempDel = nullptr;
         break;
       }
+    }
+  }
+
+  template<typename T>
+  void List<T>::clear(){
+    while (!this->empty()) {
+      this->popBack();
     }
   }
 
