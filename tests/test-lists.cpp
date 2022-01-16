@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <string>
 #include "ltds/listSingly.hpp"
-#include "ltds/listDoubly.hpp"
 
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
@@ -12,9 +11,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
   ltds::List<int> listInt2(intArray, 4);
   ltds::List<std::string> listString1;
   ltds::List<std::string> listString2(stringArray, 4);
-
-  ltds::ListDoubly<int> listInt1Doubly;
-  ltds::ListDoubly<int> listInt2Doubly(intArray, 4);
 
   SECTION("Initial state - Default constructor"){
     SECTION("Int"){
@@ -26,9 +22,6 @@ TEST_CASE("Singly linked lists", "[slist]"){
       REQUIRE(listString1.head == nullptr);
       REQUIRE(listString1.tail == nullptr);
     };
-
-    REQUIRE(listInt1Doubly.head == nullptr);
-    REQUIRE(listInt1Doubly.tail == nullptr);
   };
 
   SECTION("Initial state - Constructor with array"){
