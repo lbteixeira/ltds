@@ -92,7 +92,7 @@ TEST_CASE("Singly linked lists", "[slist]"){
     SECTION("Int"){
       listInt1.pushFront(10);
       listInt1.popBack();
-      REQUIRE(listInt1.empty() == true);
+      REQUIRE(listInt1.empty());
 
       listInt2.popBack();
       REQUIRE(listInt2.topBack() == 4);
@@ -108,7 +108,7 @@ TEST_CASE("Singly linked lists", "[slist]"){
     SECTION("String"){
       listString1.pushFront("Ten");
       listString1.popBack();
-      REQUIRE(listString1.empty() == true);
+      REQUIRE(listString1.empty());
 
       listString2.popBack();
       REQUIRE(listString2.topBack().compare("Four") == 0);
@@ -124,8 +124,8 @@ TEST_CASE("Singly linked lists", "[slist]"){
 
   SECTION("Empty"){
     SECTION("Int"){
-      REQUIRE(listInt1.empty() == true);
-      REQUIRE(listInt2.empty() == false);
+      REQUIRE(listInt1.empty());
+      REQUIRE(!listInt2.empty());
 
       listInt1.pushFront(15);
       listInt2.popFront();
@@ -133,13 +133,13 @@ TEST_CASE("Singly linked lists", "[slist]"){
       listInt2.popFront();
       listInt2.popFront();
 
-      REQUIRE(listInt1.empty() == false);
-      REQUIRE(listInt2.empty() == true);
+      REQUIRE(!listInt1.empty());
+      REQUIRE(listInt2.empty());
     };
 
     SECTION("String"){
-      REQUIRE(listString1.empty() == true);
-      REQUIRE(listString2.empty() == false);
+      REQUIRE(listString1.empty());
+      REQUIRE(!listString2.empty());
 
       listString1.pushFront("Fifteen");
       listString2.popFront();
@@ -147,8 +147,8 @@ TEST_CASE("Singly linked lists", "[slist]"){
       listString2.popFront();
       listString2.popFront();
 
-      REQUIRE(listString1.empty() == false);
-      REQUIRE(listString2.empty() == true);
+      REQUIRE(!listString1.empty());
+      REQUIRE(listString2.empty());
     };
   };
 
