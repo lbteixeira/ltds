@@ -16,12 +16,12 @@ namespace ltds {
     private:
       class node;
 
+      node* head;
+      node* tail;
+
     public:
       List();
       List(const T[], int);
-
-      node* head;
-      node* tail;
 
       void pushFront(T const&);
       void popFront();
