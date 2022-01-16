@@ -45,9 +45,16 @@ namespace ltds {
   template<typename T>
   class List<T>::node{
     public:
+      node();
+      node(const T&, node*);
+
       T key;
-      node* next = nullptr;
+      node* next;
   };
+
+  template<typename T>
+  List<T>::node::node() : next(nullptr) {}
+
 
   /*
    * Implementations related to the list class
