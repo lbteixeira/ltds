@@ -10,21 +10,22 @@
 
 ## About The Project
 
-This project is only intended to be a playground, where I'm going to practice
-the implementation of classic data structures in C++ (therefore the super
-original name). Although I'm giving below build and install instructions, I
-really don't recommend anyone to do that, this is only for my own reference.
+This project is only intended to be a playground, where I'm practicing the
+implementation of classic data structures in C++ (therefore the super original
+name). Although I'm giving below the build and install instructions, I really
+don't recommend anyone to do that, this is only for my own reference.
 
 ### Project structure
 
+To be done.
 
 ### Installation
 
-Describe how to compile/install the project.
+To be done.
 
 ### Usage
 
-Describe how to use the software.
+To be done.
 
 ## License
 
