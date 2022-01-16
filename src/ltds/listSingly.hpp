@@ -10,8 +10,8 @@ namespace ltds {
       List();
       List(const T[], int);
 
-      node* head = nullptr;
-      node* tail = nullptr;
+      node* head;
+      node* tail;
 
       void pushFront(T const&);
       void popFront();
@@ -31,10 +31,10 @@ namespace ltds {
   };
 
   template<typename T>
-  List<T>::List(){}
+  List<T>::List() : head(nullptr), tail(nullptr){}
 
   template<typename T>
-  List<T>::List(const T input[], int size){
+  List<T>::List(const T input[], int size) : head(nullptr), tail(nullptr){
     for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
   }
 
