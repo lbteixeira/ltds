@@ -12,27 +12,15 @@ TEST_CASE("Singly linked lists", "[slist]"){
   ltds::List<std::string> listString1;
   ltds::List<std::string> listString2(stringArray, 4);
 
-  SECTION("Initial state - Default constructor"){
-    SECTION("Int"){
-      REQUIRE(listInt1.head == nullptr);
-      REQUIRE(listInt1.tail == nullptr);
-    };
-
-    SECTION("String"){
-      REQUIRE(listString1.head == nullptr);
-      REQUIRE(listString1.tail == nullptr);
-    };
-  };
-
   SECTION("Initial state - Constructor with array"){
     SECTION("Int"){
-      REQUIRE(listInt2.head->key == 7);
-      REQUIRE(listInt2.tail->key == 13);
+      REQUIRE(listInt2.topFront() == 7);
+      REQUIRE(listInt2.topBack() == 13);
     };
 
     SECTION("String"){
-      REQUIRE(listString2.head->key.compare("Seven") == 0);
-      REQUIRE(listString2.tail->key.compare("Thirteen") == 0);
+      REQUIRE(listString2.topFront().compare("Seven") == 0);
+      REQUIRE(listString2.topBack().compare("Thirteen") == 0);
     };
   };
 
@@ -41,36 +29,36 @@ TEST_CASE("Singly linked lists", "[slist]"){
       listInt1.pushFront(26);
       listInt2.pushFront(26);
 
-      REQUIRE(listInt1.head->key == 26);
-      REQUIRE(listInt1.tail->key == 26);
-      REQUIRE(listInt2.head->key == 26);
-      REQUIRE(listInt2.tail->key == 13);
+      REQUIRE(listInt1.topFront() == 26);
+      REQUIRE(listInt1.topBack() == 26);
+      REQUIRE(listInt2.topFront() == 26);
+      REQUIRE(listInt2.topBack() == 13);
 
       listInt1.pushFront(12);
       listInt2.pushFront(12);
 
-      REQUIRE(listInt1.head->key == 12);
-      REQUIRE(listInt1.tail->key == 26);
-      REQUIRE(listInt2.head->key == 12);
-      REQUIRE(listInt2.tail->key == 13);
+      REQUIRE(listInt1.topFront() == 12);
+      REQUIRE(listInt1.topBack() == 26);
+      REQUIRE(listInt2.topFront() == 12);
+      REQUIRE(listInt2.topBack() == 13);
     };
 
     SECTION("String"){
       listString1.pushFront("Twenty-six");
       listString2.pushFront("Twenty-six");
 
-      REQUIRE(listString1.head->key.compare("Twenty-six") == 0);
-      REQUIRE(listString1.tail->key.compare("Twenty-six") == 0);
-      REQUIRE(listString2.head->key.compare("Twenty-six") == 0);
-      REQUIRE(listString2.tail->key.compare("Thirteen") == 0);
+      REQUIRE(listString1.topFront().compare("Twenty-six") == 0);
+      REQUIRE(listString1.topBack().compare("Twenty-six") == 0);
+      REQUIRE(listString2.topFront().compare("Twenty-six") == 0);
+      REQUIRE(listString2.topBack().compare("Thirteen") == 0);
 
       listString1.pushFront("Twelve");
       listString2.pushFront("Twelve");
 
-      REQUIRE(listString1.head->key.compare("Twelve") == 0);
-      REQUIRE(listString1.tail->key.compare("Twenty-six") == 0);
-      REQUIRE(listString2.head->key.compare("Twelve") == 0);
-      REQUIRE(listString2.tail->key.compare("Thirteen") == 0);
+      REQUIRE(listString1.topFront().compare("Twelve") == 0);
+      REQUIRE(listString1.topBack().compare("Twenty-six") == 0);
+      REQUIRE(listString2.topFront().compare("Twelve") == 0);
+      REQUIRE(listString2.topBack().compare("Thirteen") == 0);
     };
 
   };
@@ -85,18 +73,18 @@ TEST_CASE("Singly linked lists", "[slist]"){
       listInt1.pushFront(10);
       listInt1.pushFront(26);
       listInt1.popFront();
-      REQUIRE(listInt1.head->key == 10);
+      REQUIRE(listInt1.topFront() == 10);
       listInt1.pushFront(-1);
-      REQUIRE(listInt1.head->key == -1);
+      REQUIRE(listInt1.topFront() == -1);
     };
 
     SECTION("String"){
       listString1.pushFront("Ten");
       listString1.pushFront("Twenty-six");
       listString1.popFront();
-      REQUIRE(listString1.head->key.compare("Ten") == 0);
+      REQUIRE(listString1.topFront().compare("Ten") == 0);
       listString1.pushFront("Minus-one");
-      REQUIRE(listString1.head->key.compare("Minus-one") == 0);
+      REQUIRE(listString1.topFront().compare("Minus-one") == 0);
     };
   };
 
@@ -104,37 +92,33 @@ TEST_CASE("Singly linked lists", "[slist]"){
     SECTION("Int"){
       listInt1.pushFront(10);
       listInt1.popBack();
-      REQUIRE(listInt1.head == nullptr);
-      REQUIRE(listInt1.tail == nullptr);
       REQUIRE(listInt1.empty() == true);
 
       listInt2.popBack();
-      REQUIRE(listInt2.tail->key == 4);
+      REQUIRE(listInt2.topBack() == 4);
       listInt2.popBack();
-      REQUIRE(listInt2.tail->key == 10);
+      REQUIRE(listInt2.topBack() == 10);
       listInt2.pushBack(100);
-      REQUIRE(listInt2.tail->key == 100);
+      REQUIRE(listInt2.topBack() == 100);
 
       listInt2.pushBack(-1);
-      REQUIRE(listInt2.tail->key == -1);
+      REQUIRE(listInt2.topBack() == -1);
     };
 
     SECTION("String"){
       listString1.pushFront("Ten");
       listString1.popBack();
-      REQUIRE(listString1.head == nullptr);
-      REQUIRE(listString1.tail == nullptr);
       REQUIRE(listString1.empty() == true);
 
       listString2.popBack();
-      REQUIRE(listString2.tail->key.compare("Four") == 0);
+      REQUIRE(listString2.topBack().compare("Four") == 0);
       listString2.popBack();
-      REQUIRE(listString2.tail->key.compare("Ten") == 0);
+      REQUIRE(listString2.topBack().compare("Ten") == 0);
       listString2.pushBack("One-Hundred");
-      REQUIRE(listString2.tail->key.compare("One-Hundred") == 0);
+      REQUIRE(listString2.topBack().compare("One-Hundred") == 0);
 
       listString2.pushBack("Minus-One");
-      REQUIRE(listString2.tail->key.compare("Minus-One") == 0);
+      REQUIRE(listString2.topBack().compare("Minus-One") == 0);
     };
   };
 
