@@ -1,5 +1,7 @@
 .PHONY: test-debug
 test-debug:
+		cmake -D CMAKE_CXX_COMPILER=g++ -D PROJECT_BUILD_TESTS="ON" -D CMAKE_BUILD_TYPE="Debug" -S . -B tests/build/
+		cmake --build ./tests/build
 		./tests/build/tests/ltds-tests -s -r compact
 
 .PHONY: test-release
