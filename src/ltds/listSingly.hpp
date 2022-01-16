@@ -31,12 +31,12 @@ namespace ltds {
   };
 
   template<typename T>
-  List<T>::List(){};
+  List<T>::List(){}
 
   template<typename T>
   List<T>::List(const T input[], int size){
     for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
-  };
+  }
 
   template<typename T>
   void List<T>::pushFront(const T& key){
@@ -47,7 +47,7 @@ namespace ltds {
     if (tail == nullptr) {
       tail = head;
     }
-  };
+  }
 
   template<typename T>
   void List<T>::popFront(){
