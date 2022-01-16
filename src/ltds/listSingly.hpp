@@ -4,7 +4,7 @@ namespace ltds {
   template<typename T>
   class List{
     private:
-      struct node;
+      class node;
 
     public:
       List();
@@ -25,9 +25,10 @@ namespace ltds {
   };
 
   template<typename T>
-  struct List<T>::node{
-    T key;
-    node* next = nullptr;
+  class List<T>::node{
+    public:
+      T key;
+      node* next = nullptr;
   };
 
   template<typename T>
