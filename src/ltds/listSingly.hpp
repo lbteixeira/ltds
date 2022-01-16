@@ -45,7 +45,7 @@ namespace ltds {
   template<typename T>
   class List<T>::node{
     public:
-      node();
+      node() = delete;
       node(const T&, node*);
 
       T key;
@@ -53,8 +53,7 @@ namespace ltds {
   };
 
   template<typename T>
-  List<T>::node::node() : next(nullptr) {}
-
+  List<T>::node::node(const T& _key, node* _next) : key(_key), next(_next) {}
 
   /*
    * Implementations related to the list class
@@ -70,9 +69,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::pushFront(const T& key){
-    node* Node = new node;
-    Node->key = key;
-    Node->next = head;
+    node* Node = new node(key, head);
     head = Node;
     if (tail == nullptr) {
       tail = head;
@@ -89,9 +86,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::pushBack(const T& key){
-    node* Node = new node;
-    Node->key = key;
-    Node->next = nullptr;
+    node* Node = new node(key, nullptr);
 
     if (tail == nullptr) {
       head = Node;
