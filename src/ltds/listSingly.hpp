@@ -1,3 +1,13 @@
+/*
+ * Template class to represent singly linked lists.
+ *
+ * This class implements the basic capabilities of a singly linked list. It is
+ * the equivalent of STL's std::forward_list. It is not a proper C++ container,
+ * meaning that it doesn't implement the Iterator class.
+ *
+ * @author: Lucas Teixeira
+ */
+
 #pragma once
 
 namespace ltds {
@@ -24,12 +34,24 @@ namespace ltds {
       void erase(T const&);
   };
 
+  /******************************
+   * Beginning of implementations
+   ******************************/
+
+  /*
+   * Implementations related to the node class
+   */
+
   template<typename T>
   class List<T>::node{
     public:
       T key;
       node* next = nullptr;
   };
+
+  /*
+   * Implementations related to the list class
+   */
 
   template<typename T>
   List<T>::List() : head(nullptr), tail(nullptr){}
