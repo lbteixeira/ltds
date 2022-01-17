@@ -110,6 +110,7 @@ namespace ltds {
   template<typename T>
   void List<T>::popBack(){
     if (head == tail) {
+      delete head;
       head = nullptr;
       tail = nullptr;
     }
