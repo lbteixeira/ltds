@@ -66,7 +66,7 @@ namespace ltds {
 
   template<typename T>
   List<T>::List(const T input[], int size) : head(nullptr), tail(nullptr){
-    for (int i = 0; i < size; ++i) { this->pushBack(input[i]); }
+    for (auto i = 0; i < size; ++i) { this->pushBack(input[i]); }
   }
 
   // Destructor deletes all nodes before deleting the list
@@ -78,7 +78,7 @@ namespace ltds {
   // Member functions
   template<typename T>
   void List<T>::pushFront(const T& key){
-    node* Node = new node(key, head);
+    auto Node = new node(key, head);
     head = Node;
     if (tail == nullptr) {
       tail = head;
@@ -87,7 +87,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::popFront(){
-    node* tempPtr = head;
+    auto tempPtr = head;
     head = head->next;
     delete tempPtr;
     tempPtr = nullptr;
@@ -95,7 +95,7 @@ namespace ltds {
 
   template<typename T>
   void List<T>::pushBack(const T& key){
-    node* Node = new node(key, nullptr);
+    auto Node = new node(key, nullptr);
 
     if (tail == nullptr) {
       head = Node;
@@ -114,7 +114,7 @@ namespace ltds {
       tail = nullptr;
     }
     else {
-      node* temp = head;
+      auto temp = head;
       while (temp->next->next != nullptr) { temp = temp->next; }
       delete temp->next;
       temp->next = nullptr;
@@ -140,7 +140,7 @@ namespace ltds {
 
   template<typename T>
   bool List<T>::find(const T &key) const {
-    node* temp = head;
+    auto temp = head;
     while (temp != nullptr) {
       if (temp->key == key) { return true; }
       else { temp = temp->next; }
@@ -150,8 +150,8 @@ namespace ltds {
 
   template<typename T>
   void List<T>::erase(const T &key){
-    node* temp = head;
-    node* tempDel = head;
+    auto temp = head;
+    auto tempDel = head;
     while (temp->next != nullptr) {
       if (temp->next->key == key) {
         tempDel = temp->next;
