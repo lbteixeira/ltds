@@ -30,9 +30,7 @@ namespace ltds {
       void popBack();
       T topFront() const;
       T topBack() const;
-      bool find(T const&) const;
       bool empty() const;
-      void erase(T const&);
       void clear();
   };
 
