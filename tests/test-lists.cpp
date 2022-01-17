@@ -1,7 +1,9 @@
 #include <catch2/catch.hpp>
 #include <stdexcept>
 #include <string>
+
 #include "ltds/listSingly.hpp"
+#include "ltds/listDoubly.hpp"
 
 TEST_CASE("Singly linked lists", "[slist]"){
   const int intArray[] = {7, 10, 4, 13};
@@ -222,6 +224,65 @@ TEST_CASE("Singly linked lists", "[slist]"){
       listString2.clear();
       REQUIRE(listInt2.empty());
       REQUIRE(listString2.empty());
+    };
+  };
+}
+
+TEST_CASE("Doubly linked lists", "[dlist]"){
+  const int intArray[] = {7, 10, 4, 13};
+  const std::string stringArray[] = {"Seven", "Ten", "Four", "Thirteen"};
+
+  ltds::ListDouble<int> listInt(intArray, 4);
+  ltds::ListDouble<std::string> listString(stringArray, 4);
+
+  SECTION("Push and pop back"){
+
+    SECTION("List of integers"){
+      REQUIRE(listInt.topBack() == 13);
+      listInt.pushBack(-1);
+      REQUIRE(listInt.topBack() == -1);
+      listInt.pushBack(2);
+      listInt.pushBack(-50);
+      listInt.pushBack(0);
+      REQUIRE(listInt.topBack() == 0);
+      listInt.popBack();
+      listInt.popBack();
+      listInt.popBack();
+      listInt.popBack();
+      listInt.popBack();
+      listInt.popBack();
+      REQUIRE(listInt.topBack() == 10);
+      REQUIRE(!listInt.empty());
+      listInt.popBack();
+      listInt.popBack();
+      REQUIRE(listInt.empty());
+      listInt.pushBack(0);
+      REQUIRE(listInt.topBack() == 0);
+      REQUIRE(listInt.topFront() == 0);
+    };
+
+    SECTION("List of strings"){
+      REQUIRE(listString.topBack().compare("Thirteen") == 0);
+      listString.pushBack("MinusOne");
+      REQUIRE(listString.topBack().compare("MinusOne") == 0);
+      listString.pushBack("Two");
+      listString.pushBack("MinusFifty");
+      listString.pushBack("Zero");
+      REQUIRE(listString.topBack().compare("Zero") == 0);
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      REQUIRE(listString.topBack().compare("Ten") == 0);
+      REQUIRE(!listString.empty());
+      listString.popBack();
+      listString.popBack();
+      REQUIRE(listString.empty());
+      listString.pushBack("Zero");
+      REQUIRE(listString.topBack().compare("Zero") == 0);
+      REQUIRE(listString.topFront().compare("Zero") == 0);
     };
   };
 
