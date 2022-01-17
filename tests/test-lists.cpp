@@ -286,4 +286,54 @@ TEST_CASE("Doubly linked lists", "[dlist]"){
     };
   };
 
+  SECTION("Push and pop front"){
+
+    SECTION("List of integers"){
+      REQUIRE(listInt.topFront() == 7);
+      listInt.pushFront(-1);
+      REQUIRE(listInt.topFront() == -1);
+      listInt.pushFront(2);
+      listInt.pushFront(-50);
+      listInt.pushFront(0);
+      REQUIRE(listInt.topFront() == 0);
+      listInt.popFront();
+      listInt.popFront();
+      listInt.popFront();
+      listInt.popFront();
+      listInt.popFront();
+      listInt.popFront();
+      REQUIRE(listInt.topFront() == 4);
+      REQUIRE(!listInt.empty());
+      listInt.popFront();
+      listInt.popFront();
+      REQUIRE(listInt.empty());
+      listInt.pushFront(0);
+      REQUIRE(listInt.topFront() == 0);
+      REQUIRE(listInt.topBack() == 0);
+    };
+
+    SECTION("List of strings"){
+      REQUIRE(listString.topBack().compare("Thirteen") == 0);
+      listString.pushBack("MinusOne");
+      REQUIRE(listString.topBack().compare("MinusOne") == 0);
+      listString.pushBack("Two");
+      listString.pushBack("MinusFifty");
+      listString.pushBack("Zero");
+      REQUIRE(listString.topBack().compare("Zero") == 0);
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      listString.popBack();
+      REQUIRE(listString.topBack().compare("Ten") == 0);
+      REQUIRE(!listString.empty());
+      listString.popBack();
+      listString.popBack();
+      REQUIRE(listString.empty());
+      listString.pushBack("Zero");
+      REQUIRE(listString.topBack().compare("Zero") == 0);
+      REQUIRE(listString.topFront().compare("Zero") == 0);
+    };
+  };
 }

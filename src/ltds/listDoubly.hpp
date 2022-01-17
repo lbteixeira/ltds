@@ -127,4 +127,21 @@ namespace ltds {
     return tail->key;
   }
 
+  template<typename T>
+  void ListDouble<T>::popFront(){
+    auto tempPtr = head;
+    head = head->next;
+    delete tempPtr;
+    tempPtr = nullptr;
+  }
+
+  template<typename T>
+  void ListDouble<T>::pushFront(const T& key){
+    auto Node = new node(key, head, nullptr);
+    head = Node;
+    if (tail == nullptr) {
+      tail = head;
+    }
+  }
+
 }
