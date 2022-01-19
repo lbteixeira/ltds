@@ -29,6 +29,26 @@ TEST_CASE("Singly linked lists - constructors", "[slist]"){
     REQUIRE(listInt.topFront() == 7);
   };
 
+  SECTION("Assignment of a list to an empty list"){
+    ltds::List<int> assignedList;
+    assignedList = listInt;
+
+    assignedList.popFront();
+    REQUIRE(assignedList.topFront() == 10);
+    REQUIRE(listInt.topFront() == 7);
+  };
+
+  SECTION("Assignment of a list to a non-empty list"){
+    ltds::List<int> assignedList;
+    assignedList.pushBack(1);
+    assignedList.pushBack(2);
+    assignedList = listInt;
+
+    assignedList.popFront();
+    REQUIRE(assignedList.topFront() == 10);
+    REQUIRE(listInt.topFront() == 7);
+  };
+
 }
 
 TEST_CASE("Singly linked lists - operations", "[slist]"){

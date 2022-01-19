@@ -35,6 +35,17 @@ namespace ltds {
       bool empty() const;
       void erase(T const&);
       void clear();
+
+      List<T>& operator=(const List<T>& other){
+        this->clear();
+        auto tempPtr = other.head;
+        while (tempPtr) {
+          this->pushBack(tempPtr->key);
+          tempPtr = tempPtr->next;
+        }
+        tempPtr = nullptr;
+        return *this;
+      }
   };
 
   /******************************
@@ -72,13 +83,9 @@ namespace ltds {
   }
 
   template<typename T>
-  List<T>::List(const List& other) : head(nullptr), tail(nullptr){
-    auto tempPtr = other.head;
-    while (tempPtr) {
-      this->pushBack(tempPtr->key);
-      tempPtr = tempPtr->next;
-    }
-    tempPtr = nullptr;
+  List<T>::List(const List<T>& other) : head(nullptr), tail(nullptr){
+    // Copy const. and copy assignment operator have the same internal code
+    *this = other;
   }
 
   // Destructor deletes all nodes before deleting the list
