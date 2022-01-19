@@ -1,11 +1,38 @@
 #include <catch2/catch.hpp>
+#include <forward_list>
 #include <stdexcept>
 #include <string>
 
 #include "ltds/listSingly.hpp"
 #include "ltds/listDoubly.hpp"
 
-TEST_CASE("Singly linked lists", "[slist]"){
+TEST_CASE("Singly linked lists - constructors", "[slist]"){
+
+  const int intArray[] = {7, 10, 4, 13};
+  ltds::List<int> listInt(intArray, 4);
+  ltds::List<int> listIntEmpty;
+
+  SECTION("Copy of empty list"){
+    ltds::List<int> copiedListIntEmpty(listIntEmpty);
+
+    listIntEmpty.pushBack(1);
+    copiedListIntEmpty.pushBack(2);
+
+    REQUIRE(listIntEmpty.topBack() != copiedListIntEmpty.topBack());
+  }
+
+  SECTION("Copy of initialized list to empty list"){
+    ltds::List<int> copiedListInt(listInt);
+
+    copiedListInt.popFront();
+    REQUIRE(copiedListInt.topFront() == 10);
+    REQUIRE(listInt.topFront() == 7);
+  };
+
+}
+
+TEST_CASE("Singly linked lists - operations", "[slist]"){
+
   const int intArray[] = {7, 10, 4, 13};
   const std::string stringArray[] = {"Seven", "Ten", "Four", "Thirteen"};
 
@@ -228,7 +255,7 @@ TEST_CASE("Singly linked lists", "[slist]"){
   };
 }
 
-TEST_CASE("Doubly linked lists", "[dlist]"){
+TEST_CASE("Doubly linked lists - operations", "[dlist]"){
   const int intArray[] = {7, 10, 4, 13};
   const std::string stringArray[] = {"Seven", "Ten", "Four", "Thirteen"};
 

@@ -22,6 +22,7 @@ namespace ltds {
     public:
       List();
       List(const T[], int);
+      List(const List&);
       ~List();
 
       void pushFront(T const&);
@@ -48,6 +49,7 @@ namespace ltds {
   class List<T>::node{
     public:
       node(const T&, node*);
+      node(const node&) = delete;
 
       T key;
       node* next;
@@ -67,6 +69,16 @@ namespace ltds {
   template<typename T>
   List<T>::List(const T input[], int size) : head(nullptr), tail(nullptr){
     for (auto i = 0; i < size; ++i) { this->pushBack(input[i]); }
+  }
+
+  template<typename T>
+  List<T>::List(const List& other) : head(nullptr), tail(nullptr){
+    auto tempPtr = other.head;
+    while (tempPtr) {
+      this->pushBack(tempPtr->key);
+      tempPtr = tempPtr->next;
+    }
+    tempPtr = nullptr;
   }
 
   // Destructor deletes all nodes before deleting the list
