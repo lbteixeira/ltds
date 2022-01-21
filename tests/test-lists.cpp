@@ -19,6 +19,12 @@ TEST_CASE("Singly linked lists - constructors", "[slist]"){
     copiedListIntEmpty.pushBack(2);
 
     REQUIRE(listIntEmpty.topBack() != copiedListIntEmpty.topBack());
+
+    listInt.clear();
+    copiedListIntEmpty.clear();
+
+    REQUIRE(listInt.empty());
+    REQUIRE(copiedListIntEmpty.empty());
   }
 
   SECTION("Copy of initialized list to empty list"){
