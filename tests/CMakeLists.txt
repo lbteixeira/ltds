@@ -3,6 +3,7 @@ add_executable(
   ${CMAKE_PROJECT_NAME}-tests
   main.cpp
   test-lists.cpp
+  test-queue-stack.cpp
   )
 
 include_directories(../src)

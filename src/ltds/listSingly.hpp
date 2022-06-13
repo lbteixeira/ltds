@@ -78,12 +78,12 @@ namespace ltds {
   List<T>::List() : head(nullptr), tail(nullptr){}
 
   template<typename T>
-  List<T>::List(const T input[], int size) : head(nullptr), tail(nullptr){
+  List<T>::List(const T input[], int size){
     for (auto i = 0; i < size; ++i) { this->pushBack(input[i]); }
   }
 
   template<typename T>
-  List<T>::List(const List<T>& other) : head(nullptr), tail(nullptr){
+  List<T>::List(const List<T>& other){
     // Copy const. and copy assignment operator have the same internal code
     *this = other;
   }

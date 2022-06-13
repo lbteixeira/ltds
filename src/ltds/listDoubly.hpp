@@ -10,6 +10,7 @@
 
 #pragma once
 
+//TODO implement copy and move constructor/assignment
 namespace ltds {
   template<typename T>
   class ListDouble{
