@@ -1,5 +1,7 @@
 .cache
+.vscode
 compile_commands.json
+build/
 tests/build/
 examples/build/
 
